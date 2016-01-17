@@ -3,7 +3,6 @@ package com.shuffle.scplayer.core.zeroconf;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.security.KeyPair;
 import java.util.HashMap;
 import java.util.Map;
 

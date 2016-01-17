@@ -10,9 +10,12 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.BooleanControl;
 import javax.sound.sampled.Mixer;
 
 import com.shuffle.scplayer.core.zeroconf.*;
+import com.shuffle.scplayer.kodi.KodiPlayerListener;
+import com.shuffle.scplayer.kodi.KodiWebSocketClient;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.Level;
@@ -248,6 +251,12 @@ public class SCPlayerMain {
 		SpotifyZeroConfProviderFactory providerFactory = new SpotifyZeroConfProviderFactory();
 		SpotifyZeroConfServer zeroConf = new SpotifyZeroConfServer(providerFactory.create(zeroConfImpl, player), zeroConfService);
 		zeroConf.runServer();
+
+		if(Boolean.getBoolean("kodi")) {
+			KodiWebSocketClient kodiWebSocketClient = new KodiWebSocketClient();
+			KodiPlayerListener kodiPlayerListener = new KodiPlayerListener(kodiWebSocketClient);
+			player.addPlayerListener(kodiPlayerListener);
+		}
 
 		String mixerString = System.getProperty("mixer", "0");
 		if (mixerString != null && !"".equalsIgnoreCase(mixerString)) {
