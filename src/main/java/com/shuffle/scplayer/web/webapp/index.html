@@ -24,29 +24,29 @@
 				<div class="panel-heading">
 					<h3 class="panel-title" style="min-height: 20px;">
 						<div class="col-xs-10">
-							SCPlayer<span id="titleplaying"></span>
+							SCPlayer<span playerid="titleplaying"></span>
 						</div>
 						<div class="col-xs-2 text-right">
-							<a id="alogin" href="#loginmodal" data-toggle="modal">Login</a> <a href="#" id="alogout">Logout</a>
+							<a playerid="alogin" href="#loginmodal" data-toggle="modal">Login</a> <a href="#" playerid="alogout">Logout</a>
 						</div>
 					</h3>
 				</div>
 				<div class="panel-body">
 					<div class="col-xs-12 col-sm-3">
-						<img id="imgalbumcover" class="img-thumbnail center-block">
+						<img playerid="imgalbumcover" class="img-thumbnail center-block">
 					</div>
 					<div class="col-xs-12 col-sm-9">
 						<div class="row">
 							<div class="col-xs-12 col-sm-8">
-								<p id="track">Track</p>
-								<p id="artist">Artist</p>
-								<p id="album">Album</p>
+								<p playerid="track">Track</p>
+								<p playerid="artist">Artist</p>
+								<p playerid="album">Album</p>
 							</div>
 							<div class="col-xs-12 col-sm-4">
 								<div class="text-center">
 									<i style="font-size: 2.0em;"
 										class="glyphicon glyphicon-volume-up"></i>
-									<div style="cursor:pointer;" class="text-center" id="playername" data-toggle="modal" data-target="#playernamemodal"></div>
+									<div style="cursor:pointer;" class="text-center" playerid="playername" data-toggle="modal" data-target="#playernamemodal"></div>
 								</div>
 
 							</div>
@@ -54,23 +54,23 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<div class="btn-group" role="group" aria-label="Controls" style="margin-bottom:5px;">
-									<button id="btnPrev" type="button" class="btn btn-default">
+									<button playerid="btnPrev" type="button" class="btn btn-default">
 										<i class="glyphicon glyphicon-step-backward"></i> Prev
 									</button>
-									<button id="btnPlayPause" type="button" class="btn btn-default">
+									<button playerid="btnPlayPause" type="button" class="btn btn-default">
 										<i class="glyphicon glyphicon-play"></i> Play
 									</button>
-									<button id="btnNext" type="button" class="btn btn-default">
+									<button playerid="btnNext" type="button" class="btn btn-default">
 										<i class="glyphicon glyphicon-step-forward"></i> Next
 									</button>
 								</div>
 								&nbsp;
 								<div class="btn-group" role="group" aria-label="Controls" style="margin-bottom:5px;">
-									<button id="btnRepeat" type="button"
+									<button playerid="btnRepeat" type="button"
 										class="btn btn-success active">
 										<i class="glyphicon glyphicon-repeat"></i> Repeat
 									</button>
-									<button id="btnShuffle" type="button" class="btn btn-default">
+									<button playerid="btnShuffle" type="button" class="btn btn-default">
 										<i class="glyphicon glyphicon-random"></i> Shuffle
 									</button>
 								</div>
@@ -78,10 +78,10 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-3 text-center" style="padding-top: 20px;">
-								<div id="curseek">0:00 / 0:00</div>
+								<div playerid="curseek">0:00 / 0:00</div>
 							</div>
 							<div class="col-xs-9" style="padding-top: 15px;">
-								<input type="text" style="width: 100%;" value="0" id="seekbar" data-slider-min="0" data-slider-max="0" data-slider-step="1" />
+								<input type="text" style="width: 100%;" value="0" playerid="seekbar" data-slider-min="0" data-slider-max="0" data-slider-step="1" />
 							</div>
 						</div>
 					</div>
@@ -90,7 +90,7 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="loginmodal">
+	<div class="modal fade" playerid="loginmodal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
@@ -104,12 +104,12 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="lgin">Username</label> <input type="text"
-								class="form-control" id="username" name="username"
+								class="form-control" playerid="username" name="username"
 								placeholder="Username">
 						</div>
 						<div class="form-group">
 							<label for="password">Password</label> <input type="password"
-								class="form-control" id="password" name="password"
+								class="form-control" playerid="password" name="password"
 								placeholder="Password">
 						</div>
 					</div>
@@ -122,7 +122,7 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="playernamemodal">
+	<div class="modal fade" playerid="playernamemodal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>

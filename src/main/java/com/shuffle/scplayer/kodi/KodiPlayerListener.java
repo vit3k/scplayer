@@ -18,7 +18,7 @@ public class KodiPlayerListener implements PlayerListener {
 
     public KodiPlayerListener(KodiWebSocketClient kodiWebSocketClient)  {
         this.kodiWebSocketClient = kodiWebSocketClient;
-        //kodiWebSocketClient.sendMessage("{\"jsonrpc\": \"2.0\", \"method\": \"Player.GetProperties\", \"params\": { \"playerid\": 1, \"properties\":[\"speed\"] }, \"id\": 1}");
+        //kodiWebSocketClient.sendMessage("{\"jsonrpc\": \"2.0\", \"method\": \"Player.GetProperties\", \"params\": { \"playerid\": 1, \"properties\":[\"speed\"] }, \"playerid\": 1}");
     }
     @Override
     public void onPlay() {

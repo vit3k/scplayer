@@ -13,7 +13,7 @@ public class KodiTest {
         webSocketClient.getActivePlayers(players -> {
             if(players.length > 0) {
 
-                webSocketClient.getProperties(players[0].getId(),new String[] {"speed"}, properties->{
+                webSocketClient.getProperties(players[0].getPlayerid(),new String[] {"speed"}, properties->{
                             System.out.println(properties.get("speed"));
                     latch.countDown();
                         }

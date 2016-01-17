@@ -22,8 +22,7 @@ public class KodiWebSocketClient {
     private static final transient Log log = LogFactory.getLog(KodiWebSocketClient.class);
     private static final Gson gson = new GsonBuilder().create();
     Session session;
-
-    int lastMessageId = 1;
+    int lastMessageId = 0;
     public KodiWebSocketClient() {
         try {
             WebSocketContainer webSocketContainer = ContainerProvider.getWebSocketContainer();
@@ -55,8 +54,11 @@ public class KodiWebSocketClient {
             JsonParser parser = new JsonParser();
             JsonObject responseObj = parser.parse(message).getAsJsonObject();
             int id = responseObj.get("id").getAsInt();
+
+            //JsonRpcResponse response = gson.fromJson(message, JsonRpcResponse.class);
             Consumer<JsonElement> callback = callMap.get(id);
             JsonElement result = responseObj.get("result");
+
             callback.accept(result);
         }
         catch(Exception e) {
@@ -69,12 +71,13 @@ public class KodiWebSocketClient {
         int id = getMessageId();
         JsonRpcMethodCall methodCall = new JsonRpcMethodCall(id, method, params);
         String message = gson.toJson(methodCall, JsonRpcMethodCall.class);
-        session.getAsyncRemote().sendText(message);
-        log.debug("Kodi sent message: "+message);
         callMap.put(id, responseElement -> {
             T result = gson.fromJson(responseElement, type);
             callback.accept(result);
         });
+        session.getAsyncRemote().sendText(message);
+        log.debug("Kodi sent message: "+message);
+
     }
 
 
@@ -87,7 +90,10 @@ public class KodiWebSocketClient {
         params.put("playerid", playerId);
         params.put("properties", properties);
 
-        callMethod(callback, new TypeToken<Map<String, Object>>(){}.getType(), "Player.GetProperties", params);
+        callMethod(response->{
+
+
+        }, JsonObject.class, "Player.GetProperties", params);
     }
     private synchronized Integer getMessageId() {
         return ++lastMessageId;
